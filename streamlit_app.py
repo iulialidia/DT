@@ -15,21 +15,23 @@ def main():
 
     numerator, denominator = generate_question(limit_to_100_percent)
 
+    st.markdown(f'**{numerator}** / **{denominator}**')
+
     answer = st.text_input('Enter the result:')
     if st.button('Check'):
         try:
             user_answer = float(answer)
             correct_answer = (numerator / denominator) * 100
             if user_answer == round(correct_answer, 1):
-                st.write('Correct!')
+                st.success('Correct!')
             else:
-                st.write(f'Incorrect. The correct answer is {correct_answer:.1f}%.')
+                st.error(f'Incorrect. The correct answer is {correct_answer:.1f}%.')
 
             numerator, denominator = generate_question(limit_to_100_percent)
+            st.markdown(f'**{numerator}** / **{denominator}**')
+            answer = ''  # Clear the answer text field
         except ValueError:
             st.error('Please enter a valid number.')
-
-    st.markdown(f'**{numerator}** / **{denominator}**')
 
 if __name__ == "__main__":
     main()
