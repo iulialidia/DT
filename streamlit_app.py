@@ -15,7 +15,7 @@ def main():
 
     numerator, denominator = generate_question(limit_to_100_percent)
 
-    st.markdown(f'**{numerator}** / **{denominator}**')
+    st.markdown(f'<h2><strong>{numerator}</strong> / <strong>{denominator}</strong></h2>', unsafe_allow_html=True)
 
     answer = st.text_input('Enter the result:')
     if st.button('Check'):
@@ -28,7 +28,7 @@ def main():
                 st.error(f'Incorrect. The correct answer is {correct_answer:.1f}%.')
 
             numerator, denominator = generate_question(limit_to_100_percent)
-            st.markdown(f'**{numerator}** / **{denominator}**')
+            st.markdown(f'<h2><strong>{numerator}</strong> / <strong>{denominator}</strong></h2>', unsafe_allow_html=True)
             answer = ''  # Clear the answer text field
         except ValueError:
             st.error('Please enter a valid number.')
